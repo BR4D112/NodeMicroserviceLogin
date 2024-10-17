@@ -1,0 +1,16 @@
+ docker run --name postgres-ex -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
+
+CREATE TABLE public.login (
+	id serial NOT NULL,
+	customerid bigint NOT NULL,
+	"password" varchar NOT NULL,
+	CONSTRAINT login_pk PRIMARY KEY (id)
+);
+
+
+docker run --name postgres-ex -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5432:5432 -d postgres
+
+docker exec -it postgres-ex bash
+
+docker start id_del_contenedor
+

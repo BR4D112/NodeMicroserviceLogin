@@ -19,4 +19,7 @@ export const Login = sequalize.define('login',{
     },
     {
         freezeTableName: true,
-      })
+      },
+    {
+        timestamps:false
+    })

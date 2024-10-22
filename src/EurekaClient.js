@@ -2,7 +2,7 @@ import { Eureka } from "eureka-js-client";
 
 const client = new Eureka({
     instance: {
-        app: 'login',
+        app:'login',
         hostName: 'localhost',
         ipAddr:'127.0.0.1',
         port: {
@@ -16,15 +16,15 @@ const client = new Eureka({
         },
     },
     eureka: {
-        host: process.env.EUREKA_HOST,
-        port: 8761,
+        host: 'localhost',
+        port: 8761,  // Cambiar al puerto correcto donde corre el servidor Eureka
         servicePath: '/eureka/apps/'
     }
 });
-//client.stop()
+
 try {
     client.start(err => {
-        console.log("server client added");       
+        console.log("server try to add");       
     })
 } catch (error) {
     console.log("eureka fail");

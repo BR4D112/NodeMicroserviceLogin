@@ -2,12 +2,11 @@ import { Eureka } from "eureka-js-client";
 
 const client = new Eureka({
     instance: {
-        //instanceId:'http://localhost:3000/',
         app: 'login',
         hostName: 'localhost',
         ipAddr:'127.0.0.1',
         port: {
-            '$':3000,
+            '$':process.env.PORT,
             '@enabled':'true'
         },
         vipAddress: 'login',
@@ -17,7 +16,7 @@ const client = new Eureka({
         },
     },
     eureka: {
-        host: 'localhost',
+        host: process.env.EUREKA_HOST,
         port: 8761,
         servicePath: '/eureka/apps/'
     }
@@ -25,8 +24,20 @@ const client = new Eureka({
 //client.stop()
 try {
     client.start(err => {
-        console.log("this is null",err);       
+        console.log("server client added");       
     })
 } catch (error) {
     console.log("eureka fail");
+}
+export function closeClient(){
+    client.stop(err=>{
+        console.log("closed");
+    });
+}
+export function turnOnClient(){
+    client.start(err=>{
+        console.log("serverAdded");
+        
+    }
+    )
 }
